@@ -1,15 +1,12 @@
 import requests
-import random
 import warnings
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 from playwright.sync_api import sync_playwright
 import tkinter as tk
 import webbrowser
-import json
 from pathlib import Path
 from datetime import datetime
-
 
 def fetch_public_profile_html(username): 
     """Gets HTML of an Instagram page with `username`."""
@@ -175,7 +172,7 @@ def main():
             html = fetch_public_profile_html(username)
             post_urls = extract_post_urls(html, username)
             # post_urls = ['https://www.instagram.com/matt.lyttle/p/DVtVh2QDduk/', 'https://www.instagram.com/matt.lyttle/p/DX1gWWijhV0/', 'https://www.instagram.com/matt.lyttle/p/DX7O91aEZZp/', 'https://www.instagram.com/matt.lyttle/p/DX8D3LatiFj/', 'https://www.instagram.com/matt.lyttle/p/DXmCqtGjv8f/', 'https://www.instagram.com/matt.lyttle/p/DXrlSTXDrXk/', 'https://www.instagram.com/matt.lyttle/p/DXvLS4mEX4X/', 'https://www.instagram.com/matt.lyttle/p/DXzLMvoDnFP/', 'https://www.instagram.com/matt.lyttle/p/DYD3hlxjeH3/']
-            # post_urls = remove_urls_in_history(post_urls)
+            post_urls = remove_urls_in_history(post_urls)
             if len(post_urls) > 0:
                 post_urls_all.extend(post_urls)
             post_urls_all
